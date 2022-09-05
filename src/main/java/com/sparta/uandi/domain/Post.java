@@ -73,4 +73,3 @@ public class Post extends Timestamped {
         this.content = postRequestDto.getContent();
         this.personnel = postRequestDto.getPersonnel();
     }
-}
