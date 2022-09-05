@@ -1,4 +1,4 @@
 package com.sparta.uandi.domain;
 
-public class Post {
+public class Post extends Timestamped{
 }
