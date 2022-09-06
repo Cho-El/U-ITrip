@@ -54,11 +54,8 @@ public class Post extends Timestamped {
     private String imageUrl;
 
     // 댓글 리스트
-    @OneToMany(mappedBy ="post", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Comment> commentList;
-
-    // headCount
-
 
     // 작성자 확인
     public boolean validateMember(Member member) {
@@ -73,3 +70,4 @@ public class Post extends Timestamped {
         this.content = postRequestDto.getContent();
         this.personnel = postRequestDto.getPersonnel();
     }
+}

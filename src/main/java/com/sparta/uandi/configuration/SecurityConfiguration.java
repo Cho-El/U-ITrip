@@ -58,8 +58,8 @@ public class SecurityConfiguration {
                 .antMatchers("/api/member/**").permitAll()
                 .antMatchers("/api/post/**").permitAll()
                 .antMatchers("/api/comment/**").permitAll()
-                .antMatchers("/api/recomment/**").permitAll()
-                .antMatchers("/api/likes/**").permitAll()
+                .antMatchers("/api/review/**").permitAll()
+                .antMatchers("/api/participation/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()

@@ -16,6 +16,7 @@ import com.sparta.uandi.domain.Post;
 import com.sparta.uandi.domain.Review;
 import com.sparta.uandi.jwt.TokenProvider;
 import com.sparta.uandi.repository.CommentRepository;
+import com.sparta.uandi.repository.ParticipationRepository;
 import com.sparta.uandi.repository.PostRepository;
 import com.sparta.uandi.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,7 +42,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;
     private final ReviewRepository reviewRepository;
-
+    private final ParticipationRepository participationRepository;
 
     // 게시글 생성
     @Transactional
@@ -91,7 +92,7 @@ public class PostService {
                         .arrivalDate(post.getArrivalDate())
                         .content(post.getContent())
                         .personnel(post.getPersonnel())
-                        // headCount
+                        .headCount(participationRepository.countByPostId(post.getPostId()))
                         .imgUrl(post.getImageUrl())
                         .createdAt(post.getCreatedAt())
                         .modifiedAt(post.getModifiedAt())
@@ -157,7 +158,7 @@ public class PostService {
                         .arrivalDate(post.getArrivalDate())
                         .content(post.getContent())
                         .personnel(post.getPersonnel())
-                        // headCount
+                        .headCount(participationRepository.countByPostId(post.getPostId()))
                         .imgUrl(post.getImageUrl())
                         .createdAt(post.getCreatedAt())
                         .modifiedAt(post.getModifiedAt())
