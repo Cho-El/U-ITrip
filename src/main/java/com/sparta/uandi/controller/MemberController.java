@@ -21,6 +21,7 @@ public class MemberController {
 
     @PostMapping("/api/member/signup")
     public ResponseDto<?> signup(@RequestBody @Valid MemberRequestDto requestDto) {
+        System.out.println(requestDto.getMbti());
         return memberService.createMember(requestDto);
     }
 

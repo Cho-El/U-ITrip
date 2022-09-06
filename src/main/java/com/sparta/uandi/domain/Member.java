@@ -1,6 +1,8 @@
 package com.sparta.uandi.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sparta.uandi.controller.request.EditMyInfoDto;
+import com.sparta.uandi.controller.request.MemberRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,6 +37,16 @@ public class Member extends Timestamped {
     @JsonIgnore
     private String password;
 
+    public void update(EditMyInfoDto requestDto){
+        mbti = requestDto.getMbti();
+        writer = requestDto.getWriter();
+        if (!mbti.isBlank()){
+            this.mbti = mbti;
+        }
+        if(!writer.isBlank()) {
+            this.writer = writer;
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) {

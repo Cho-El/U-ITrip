@@ -53,7 +53,7 @@ public class ParticipationService {
                             .arrivalDate(post.getArrivalDate())
                             .content(post.getContent())
                             .personnel(post.getPersonnel())
-                            .headCount(participationRepository.countByPostId(postId))
+                            .headCount(participationRepository.countByPostPostId(postId))
                             .imgUrl(post.getImageUrl())
                             .createdAt(post.getCreatedAt())
                             .modifiedAt(post.getModifiedAt())
