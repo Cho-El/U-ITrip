@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequestDto {
-    private String nickname;
-    private String password;
+public class ParticipationRequestDto {
+    private Long postId;
+    private Long userId;
 }

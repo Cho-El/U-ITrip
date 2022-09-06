@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class LoginRequestDto {
-    private String nickname;
-    private String password;
+@NoArgsConstructor
+@Getter
+public class EditMyInfoDto {
+    private String writer;
+    private String mbti;
 }
