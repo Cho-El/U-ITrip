@@ -12,6 +12,7 @@ import com.sparta.uandi.domain.UserDetailsImpl;
 import com.sparta.uandi.repository.ParticipationRepository;
 import com.sparta.uandi.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
