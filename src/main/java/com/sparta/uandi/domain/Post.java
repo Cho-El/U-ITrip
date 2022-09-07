@@ -56,7 +56,7 @@ public class Post extends Timestamped {
     // 댓글 리스트
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Comment> commentList;
-    
+
     // 리뷰 리스트
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<Review> reviewList;
