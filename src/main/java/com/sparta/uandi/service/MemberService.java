@@ -78,6 +78,7 @@ public class MemberService {
                         .nickname(member.getNickname())
                         .createdAt(member.getCreatedAt())
                         .modifiedAt(member.getModifiedAt())
+                        .writer(member.getWriter())
                         .mbti(member.getMbti())
                         .build()
         );
