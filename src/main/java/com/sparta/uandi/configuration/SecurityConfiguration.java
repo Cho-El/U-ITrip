@@ -18,6 +18,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -41,7 +44,13 @@ public class SecurityConfiguration {
     @Bean
     @Order(SecurityProperties.BASIC_AUTH_ORDER)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors();
+        http.cors().configurationSource(request -> {
+            var cors = new CorsConfiguration();
+            cors.setAllowedOrigins(List.of("http://localhost:3000")); // 허용할 URL
+            cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS")); // 허용할 Http Method
+            cors.setAllowedHeaders(List.of("*")); // 허용할 Header
+            return cors;
+        });
 
         http.csrf().disable()
 
