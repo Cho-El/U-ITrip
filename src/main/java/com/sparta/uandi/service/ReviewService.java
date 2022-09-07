@@ -7,6 +7,7 @@ import com.sparta.uandi.domain.Member;
 import com.sparta.uandi.domain.Post;
 import com.sparta.uandi.domain.Review;
 import com.sparta.uandi.jwt.TokenProvider;
+import com.sparta.uandi.repository.ParticipationRepository;
 import com.sparta.uandi.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ import java.util.Optional;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
+    private final ParticipationRepository participationRepository;
     private final PostService postService;
     private final TokenProvider tokenProvider;
 
@@ -48,6 +50,9 @@ public class ReviewService {
         }
 
         // 참여자인지 확인
+        if (participationRepository.findByMemberAndPost(member, post).isEmpty()) {
+            return ResponseDto.fail("BAD_REQUEST", "참여자만 작성할 수 있습니다.");
+        }
 
         Review review = Review.builder()
                 .post(post)
@@ -122,8 +127,6 @@ public class ReviewService {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 입니다.");
         }
 
-        // 참여자인지 확인
-
         if (review.validateMember(member)) {
             return ResponseDto.fail("BAD_REQUEST", "작성자만 수정할 수 있습니다.");
         }
@@ -162,8 +165,6 @@ public class ReviewService {
         if (null == review) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 리뷰 입니다.");
         }
-
-        // 참여자인지 확인
 
         if (review.validateMember(member)) {
             return ResponseDto.fail("BAD_REQUEST", "작성자만 삭제할 수 있습니다.");

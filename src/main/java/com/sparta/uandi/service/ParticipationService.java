@@ -85,7 +85,7 @@ public class ParticipationService {
             participationRepository.delete(new Participation(member, post));
             return ResponseDto.success("Cancel likes success");
         }
-        return ResponseDto.fail("Not_ENROLLED", "참가 신청을 하지 않았습니다.");
+        return ResponseDto.fail("NOT_ENROLLED", "참가 신청을 하지 않았습니다.");
     }
     
 }

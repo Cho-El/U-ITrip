@@ -36,7 +36,7 @@ import java.util.Optional;
 public class PostService {
 
     @Value("${cloud.aws.s3.bucket}")
-    private String innocampbucket;
+    private String uanditripbucket;
     private final AmazonS3Client amazonS3Client;
     private final TokenProvider tokenProvider;
     private final PostRepository postRepository;
@@ -263,15 +263,15 @@ public class PostService {
         // PutObjectRequest 는 Aws S3 버킷에 업로드할 객체 메타 데이터와 파일 데이터로 이루어져있다.
         // S3 에 업로드
         amazonS3Client.putObject(
-                new PutObjectRequest(innocampbucket, originalName, file.getInputStream(), objectMetaData)
+                new PutObjectRequest(uanditripbucket, originalName, file.getInputStream(), objectMetaData)
                         .withCannedAcl(CannedAccessControlList.PublicRead)
         );
 
         // 접근가능한 URL 가져오기
-        String url = amazonS3Client.getUrl(innocampbucket, originalName).toString();
+        String url = amazonS3Client.getUrl(uanditripbucket, originalName).toString();
 
         // 삭제 객체 생성
-        DeleteObjectRequest request = new DeleteObjectRequest(innocampbucket, originalName);
+        DeleteObjectRequest request = new DeleteObjectRequest(uanditripbucket, originalName);
         amazonS3Client.deleteObject(request);
 
         return url;
