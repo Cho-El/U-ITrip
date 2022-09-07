@@ -87,7 +87,7 @@ public class MypageService {
                             .content(participation.getPost().getContent())
                             .personnel(participation.getPost().getPersonnel())
                             .headCount(participationRepository.countByPostPostId(participation.getPost().getPostId()))
-                            .imgUrl(participation.getPost().getImageUrl())
+                            .imageUrl(participation.getPost().getImageUrl())
                             .createdAt(participation.getPost().getCreatedAt())
                             .modifiedAt(participation.getPost().getModifiedAt())
                             .build()

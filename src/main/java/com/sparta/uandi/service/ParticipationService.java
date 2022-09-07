@@ -54,7 +54,7 @@ public class ParticipationService {
                             .content(post.getContent())
                             .personnel(post.getPersonnel())
                             .headCount(participationRepository.countByPostPostId(postId))
-                            .imgUrl(post.getImageUrl())
+                            .imageUrl(post.getImageUrl())
                             .createdAt(post.getCreatedAt())
                             .modifiedAt(post.getModifiedAt())
                             .build()

@@ -23,7 +23,7 @@ public class PostResponseDto {
     private String content;
     private Long personnel;
     private Long headCount;
-    private String imgUrl;
+    private String imageUrl;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private List<CommentResponseDto> commentResponseDtoList;
