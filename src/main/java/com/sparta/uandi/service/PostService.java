@@ -271,8 +271,8 @@ public class PostService {
         String url = amazonS3Client.getUrl(uanditripbucket, originalName).toString();
 
         // 삭제 객체 생성
-        DeleteObjectRequest request = new DeleteObjectRequest(uanditripbucket, originalName);
-        amazonS3Client.deleteObject(request);
+//        DeleteObjectRequest request = new DeleteObjectRequest(uanditripbucket, originalName);
+//        amazonS3Client.deleteObject(request);
 
         return url;
     }
