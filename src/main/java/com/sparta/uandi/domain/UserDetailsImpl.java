@@ -16,10 +16,11 @@ import java.util.Collection;
 @AllArgsConstructor
 public class UserDetailsImpl implements UserDetails {
 
+    // 스프링 시큐리티에서 관리하는 UserDetails 타입의 객체를 생성
     private Member member;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() { // 권한 설정
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(Authority.ROLE_MEMBER.toString());
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(authority);

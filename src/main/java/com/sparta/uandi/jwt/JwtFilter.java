@@ -42,6 +42,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private final TokenProvider tokenProvider;
     private final UserDetailsServiceImpl userDetailsService;
 
+    @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws IOException, ServletException {
 
@@ -77,7 +78,7 @@ public class JwtFilter extends OncePerRequestFilter {
             UserDetails principal = userDetailsService.loadUserByUsername(subject);
 
             Authentication authentication = new UsernamePasswordAuthenticationToken(principal, jwt, authorities);
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            SecurityContextHolder.getContext().setAuthentication(authentication); // 인증된 객체를 Context안에 넣는다.
         }
 
         filterChain.doFilter(request, response);

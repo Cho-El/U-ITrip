@@ -25,7 +25,7 @@ import java.util.Optional;
 
 @Slf4j
 @Component
-public class TokenProvider {
+public class TokenProvider {// JWT 을 생성, 검증, 정보추출 해주는 클래스이다.
 
     private static final String AUTHORITIES_KEY = "auth";
     private static final String BEARER_PREFIX = "Bearer ";
@@ -44,6 +44,7 @@ public class TokenProvider {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
+    // Token 생성
     public TokenDto generateTokenDto(Member member) {
         long now = (new Date().getTime());
 
